@@ -2,27 +2,28 @@
     <html>
       <head>
         <meta charset="utf-8">
-        <title>运维导航</title>
-	<link rel="stylesheet" href="/static/css/boostrap.min.css" />
+        <title>各机房监控系统导航</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css" />
       </head>
       <body>
 	<div class="container">
 	        <div class="row">
 			<div class="col-xs-12 col-md-12">
-				<h2>运维导航页面</h2>
+				<div class="jumbotron">
+				  <center><h1>各机房监控系统导航</h1></center>
+				</div>
 			</div>
 		</div>
 	        <div class="row">
-			<div class="col-xs-12 col-md-2">
-				<a href="http://10.21.2.4/nagios/">北京机房nagios</a>
-				<button type="button" class="btn btn-primary">提交</button>
+			{% for b in blocks %}
+			<div class="col-xs-12 col-md-4">
+				<div class="panel panel-default">
+				  <div class="panel-body">
+	                               <center> <a style=" color:#666; font-size:22px;" href={{ b.urls }} target="view_window">{{ b.name }}</a></center>
+				  </div>
+				</div>
 			</div>
-        		<div class="col-xs-12 col-md-8">
-				<a href="http://10.220.0.166/nagios/">佛山机房nagios</a>
-			</div>
-        		<div class="col-xs-12 col-md-2">
-				<a href="http://10.22.1.254/centreon/index.php">上海机房CES</a>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
       </body>
